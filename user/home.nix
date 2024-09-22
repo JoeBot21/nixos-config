@@ -2,7 +2,7 @@
 
 {
   imports = [
-#    ./plasma.nix
+    ./plasma.nix
     ./private.nix
   ];
 
@@ -68,7 +68,7 @@
   programs = {
     git = {
       enable = true;
-#      package = pkgs.gitFull;
+      package = pkgs.gitFull;
       lfs.enable = true;
     };
 
