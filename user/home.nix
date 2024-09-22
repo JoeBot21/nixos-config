@@ -3,7 +3,7 @@
 {
   imports = [
     ./plasma.nix
-    ./private.nix
+    #./private.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -70,6 +70,11 @@
       enable = true;
       package = pkgs.gitFull;
       lfs.enable = true;
+      userName = "JoeBot21";
+      userEmail = "joe.bears77@gmail.com";
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
     };
 
     ledger = {
