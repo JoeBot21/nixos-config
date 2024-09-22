@@ -75,9 +75,10 @@
       userEmail = "joe.bears77@gmail.com";
       extraConfig = {
         init.defaultBranch = "main";
-        credential.helper = "
       };
     };
+
+    home-manager.enable = true;
 
     ledger = {
       enable = true;
@@ -87,8 +88,10 @@
     ncmpcpp.enable = true;
     neomutt.enable = true;
 
-  # Let Home Manager install and manage itself.
-    home-manager.enable = true;
+    ssh = {
+      enable = true;
+      addKeysToAgent = "yes";
+    };
   };
 
   services = {
@@ -99,6 +102,8 @@
     };
 
     mpd-mpris.enable = true;
+
+    ssh-agent.enable = true;
   };
 
 
