@@ -98,6 +98,7 @@
     ssh = {
       enable = true;
       addKeysToAgent = "yes";
+      extraConfig = "AddressFamily inet";
     };
   };
 
