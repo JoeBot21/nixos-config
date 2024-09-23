@@ -64,13 +64,14 @@
   #  /etc/profiles/per-user/joebot/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    SSH_AUTH_SOCK = "/run/user/1000/ssh-agent";
+    #SSH_AUTH_SOCK = "/run/user/1000/ssh-agent";
     # EDITOR = "emacs";
   };
 
   programs = {
     bash = {
       enable = true;
+      initExtra = "eval $(ssh-agent -s) >/dev/null";
     };
 
     git = {
