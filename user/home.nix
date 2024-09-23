@@ -64,10 +64,15 @@
   #  /etc/profiles/per-user/joebot/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
+    SSH_AUTH_SOCK = "/run/user/1000/ssh-agent";
     # EDITOR = "emacs";
   };
 
   programs = {
+    bash = {
+      enable = true;
+    };
+
     git = {
       enable = true;
       package = pkgs.gitFull;
@@ -103,8 +108,7 @@
     };
 
     mpd-mpris.enable = true;
-
-    ssh-agent.enable = true;
+    #ssh-agent.enable = true;
   };
 
 
