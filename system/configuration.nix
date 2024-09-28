@@ -101,15 +101,12 @@
     description = "JoeBot";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      deja-dup
-      kdePackages.kate
     #  thunderbird
     ];
   };
 
   # Enabled programs
   programs = {
-    firefox.enable = true;
     kdeconnect.enable = true;
   };
 

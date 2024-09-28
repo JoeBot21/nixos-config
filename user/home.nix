@@ -14,7 +14,9 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    kdePackages.falkon
+    blender
+    deja-dup
+    kdePackages.kate
     keepassxc
     mpc-cli
     retroshare
@@ -73,6 +75,8 @@
       enable = true;
       initExtra = "eval $(ssh-agent -s) >/dev/null";
     };
+
+    firefox.enable = true;
 
     git = {
       enable = true;
