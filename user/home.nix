@@ -15,6 +15,7 @@
   # environment.
   home.packages = with pkgs; [
     blender
+    conda
     deja-dup
     kdePackages.kate
     keepassxc
