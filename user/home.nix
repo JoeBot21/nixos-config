@@ -2,8 +2,7 @@
 
 {
   imports = [
-    ./plasma.nix
-    #./private.nix
+    # ./private.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -14,12 +13,14 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    asunder
     blender
-    conda
     deja-dup
+    firefox
     kdePackages.kate
     keepassxc
     mpc-cli
+    picard
     retroshare
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -50,9 +51,9 @@
     # '';
   };
 
-  home.sessionPath = [
-    "/home/joebot/.conda/condabin"
-  ];
+  # home.sessionPath = [
+    # "/home/joebot/.conda/condabin"
+  # ];
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a

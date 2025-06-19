@@ -15,7 +15,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-7676f442-2624-484d-ad6a-883254a49582".device = "/dev/disk/by-uuid/7676f442-2624-484d-ad6a-883254a49582";
+  boot.initrd.luks.devices."luks-0e812135-907c-4d22-9b89-f92055fccc0e".device = "/dev/disk/by-uuid/0e812135-907c-4d22-9b89-f92055fccc0e";
   networking.hostName = "joebotworkstation"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -27,8 +27,7 @@
   networking.networkmanager.enable = true;
 
   # Enable flakes
-  nix.package = pkgs.nixFlakes;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
@@ -70,14 +69,14 @@
   services.xserver.xkb.extraLayouts.custom = {
     description = "English (Engram)";
     languages = [ "eng" ];
-    symbolsFile = /home/joebot/git/nix/nixos/system/CustomKeyboard;
+    symbolsFile = ./CustomKeyboard;
   };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -99,15 +98,16 @@
   users.users.joebot = {
     isNormalUser = true;
     description = "JoeBot";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" ];
     packages = with pkgs; [
-    #  thunderbird
+    #  Add packages here
     ];
   };
 
   # Enabled programs
   programs = {
     kdeconnect.enable = true;
+    adb.enable = true;
   };
 
   # Allow unfree packages
@@ -123,8 +123,7 @@
     hunspellDicts.en_US
     hunspellDicts.en_US-large
     tmux
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -143,8 +142,6 @@
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
   networking = {
     firewall.enable = true;
     nftables.enable = true;
@@ -156,6 +153,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
 }
