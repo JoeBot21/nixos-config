@@ -19,6 +19,7 @@
     firefox
     kdePackages.kate
     keepassxc
+    librecad
     mpc-cli
     picard
     retroshare
