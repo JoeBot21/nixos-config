@@ -5,12 +5,12 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./NeoVim.nix
-      ./nvidia.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./NeoVim.nix
+    ./nvidia.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

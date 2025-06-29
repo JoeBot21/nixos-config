@@ -1,6 +1,13 @@
 { config, pkgs, ... }:
 
 {
+  # programs.nixvim = {
+    # enable = true;
+
+    # colorschemes.gruvbox.enable = true;
+    # plugins.lualine.enable = true;
+  # };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;

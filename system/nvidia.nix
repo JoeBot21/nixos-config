@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # Enable OpenGL
@@ -47,15 +47,15 @@
     };
   };
 
-  # Create `mobileJoeBot` specilization for better battery life when not on a charger
-  # specialisation = {
-    # mobileJoeBot.configuration = {
-    # system.nixos.tags = [ "mobileJoeBot" ];
-    # hardware.nvidia.prime = {
-      # offload.enable = lib.mkForce true;
-      # offload.enableOffloadCmd = lib.mkForce true;
-      # sync.enable = lib.mkForce false;
-      # };
-    # };
-  # };
+  Create `mobileJoeBot` specilization for better battery life when not on a charger
+  specialisation = {
+    mobileJoeBot.configuration = {
+    system.nixos.tags = [ "mobileJoeBot" ];
+    hardware.nvidia.prime = {
+      offload.enable = lib.mkForce true;
+      offload.enableOffloadCmd = lib.mkForce true;
+      sync.enable = lib.mkForce false;
+      };
+    };
+  };
 }
