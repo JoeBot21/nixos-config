@@ -2,7 +2,7 @@
 
 {
   # Enable OpenGL
-  hardware.graphics.enable = True;
+  hardware.graphics.enable = true;
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
@@ -48,14 +48,14 @@
   };
 
   # Create `mobileJoeBot` specilization for better battery life when not on a charger
-  specialisation = {
-    mobileJoeBot.configuration = {
-      system.nixos.tags = [ "mobileJoeBot" ];
-      hardware.nvidia.prime = {
-        offload.enable = lib.mkForce true;
-        offload.enableOffloadCmd = lib.mkForce true;
-        sync.enable = lib.mkForce false;
-      };
-    };
-  };
+  # specialisation = {
+    # mobileJoeBot.configuration = {
+    # system.nixos.tags = [ "mobileJoeBot" ];
+    # hardware.nvidia.prime = {
+      # offload.enable = lib.mkForce true;
+      # offload.enableOffloadCmd = lib.mkForce true;
+      # sync.enable = lib.mkForce false;
+      # };
+    # };
+  # };
 }
