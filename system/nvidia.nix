@@ -47,7 +47,7 @@
     };
   };
 
-  Create `mobileJoeBot` specilization for better battery life when not on a charger
+  # Create `mobileJoeBot` specilization for better battery life when not on a charger
   specialisation = {
     mobileJoeBot.configuration = {
     system.nixos.tags = [ "mobileJoeBot" ];
