@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./neovim.nix
     # ./private.nix
   ];
 
