@@ -27,7 +27,13 @@
 
   # Home Manager configuration
   home-manager.users.joebot = { config, pkgs, lib, ... }: {
-    imports = [ ./neovim.nix ];
+    home.file = {
+      neovim = {
+        enable = true;
+        source = ./neovim.nix;
+        target = ".config/nvim/init.lua";
+      };
+    };
 
     programs = {
       bash = {
