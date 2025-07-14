@@ -1,98 +1,88 @@
 
-{ config, pkgs, lib, ... }:
-  let
-    nixvim = import (builtins.fetchGit {
-      url = "https://github.com/nix-community/nixvim";
-      ref = "nixos-25.05";
-    });
-  in {
-    imports = [ <home-manager/nixos> ];
+{ config, pkgs, lib, ... }: {
 
-    home-manager.useGlobalPkgs = true;
+  imports = [ <home-manager/nixos> ];
 
-    # Nixos definition of the user account
-    users.users.joebot = {
-      isNormalUser = true;
-      description = "JoeBot";
-      home = "/home/joebot";
-      extraGroups = [ "networkmanager" "wheel" ];
-      packages = with pkgs; [
-        asunder
-        blender
-        deja-dup
-        kdePackages.kate
-        keepassxc
-        librecad
-        mpc-cli
-        picard
-        retroshare
-        xournalpp
-      ];
-    };
+  home-manager.useGlobalPkgs = true;
 
-    # Home Manager configuration
-    home-manager.users.joebot = { pkgs, ... }: {
-      imports = [ nixvim.homeModules.nixvim ];
+  # Nixos definition of the user account
+  users.users.joebot = {
+    isNormalUser = true;
+    description = "JoeBot";
+    home = "/home/joebot";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      asunder
+      blender
+      deja-dup
+      kdePackages.kate
+      keepassxc
+      librecad
+      mpc-cli
+      picard
+      retroshare
+      xournalpp
+    ];
+  };
 
-      programs = {
-        bash = {
-          enable = true;
-          initExtra = "eval $(ssh-agent -s) >/dev/null";
-        };
+  # Home Manager configuration
+  home-manager.users.joebot = { config, pkgs, lib, ... }: {
+    imports = [ ./neovim.nix ];
 
-        firefox.enable = true;
+    programs = {
+      bash = {
+        enable = true;
+        initExtra = "eval $(ssh-agent -s) >/dev/null";
+      };
 
-        git = {
-          enable =  true;
-          package = pkgs.gitFull;
-          lfs.enable = true;
-          userName = "JoeBot21";
-          userEmail = "joe.bears77@gmail.com";
-          extraConfig = {
-            init.defaultBranch = "main";
-          };
-        };
+      firefox.enable = true;
 
-        ledger = {
-          enable = true;
-          extraConfig = "--file ~/Documents/ledger.dat";
-        };
-
-        ncmpcpp.enable = true;
-        neomutt.enable = true;
-
-        nixvim = {
-          enable = true;
-          colorschemes.gruvbox.enable = true;
-        };
-
-        ssh = {
-          enable = true;
-          addKeysToAgent = "yes";
-          extraConfig = "AddressFamily inet";
+      git = {
+        enable =  true;
+        package = pkgs.gitFull;
+        lfs.enable = true;
+        userName = "JoeBot21";
+        userEmail = "joe.bears77@gmail.com";
+        extraConfig = {
+          init.defaultBranch = "main";
         };
       };
 
-      services = {
-        mpd = {
-          enable = true;
-          musicDirectory = "~/Music";
-          dataDir = "/home/joebot/.local/state/mpd";
-        };
-
-        mpd-mpris.enable = true;
+      ledger = {
+        enable = true;
+        extraConfig = "--file ~/Documents/ledger.dat";
       };
 
+      ncmpcpp.enable = true;
+      neomutt.enable = true;
 
-      # This value determines the Home Manager release that your configuration is
-      # compatible with. This helps avoid breakage when a new Home Manager release
-      # introduces backwards incompatible changes.
-      #
-      # You should not change this value, even if you update Home Manager. If you do
-      # want to update teh value, them make sure to first check the Home Manager
-      # release notes.
-      home.stateVersion = "25.05";  # Please read the comment before changing.
+      ssh = {
+        enable = true;
+        addKeysToAgent = "yes";
+        extraConfig = "AddressFamily inet";
+      };
     };
 
-    # nixvim configuration
-  }
+    services = {
+      mpd = {
+        enable = true;
+        musicDirectory = "~/Music";
+        dataDir = "/home/joebot/.local/state/mpd";
+      };
+
+      mpd-mpris.enable = true;
+    };
+
+
+    # This value determines the Home Manager release that your configuration is
+    # compatible with. This helps avoid breakage when a new Home Manager release
+    # introduces backwards incompatible changes.
+    #
+    # You should not change this value, even if you update Home Manager. If you do
+    # want to update teh value, them make sure to first check the Home Manager
+    # release notes.
+    home.stateVersion = "25.05";  # Please read the comment before changing.
+  };
+
+  # nixvim configuration
+}
