@@ -113,14 +113,6 @@
       enable = true;
       defaultEditor = true;
       vimAlias = true;
-      configure = {
-        customRC = ''
-          set number
-          set expandtab
-          set tabstop=2
-          set shiftwidth=2
-        '';
-      };
     };
 
     kdeconnect.enable = true;

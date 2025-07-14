@@ -30,7 +30,7 @@
     home.file = {
       neovim = {
         enable = true;
-        source = ./neovim.nix;
+        source = ./neovim.lua;
         target = ".config/nvim/init.lua";
       };
     };
