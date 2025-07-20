@@ -33,6 +33,11 @@
         source = ./neovim.lua;
         target = ".config/nvim/init.lua";
       };
+      tridactyl = {
+        enable = true;
+        source = ./tridactylrc;
+        target = ".config/tridactyl/tridactylrc";
+      };
     };
 
     programs = {
