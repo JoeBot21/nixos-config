@@ -5,12 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./joebot.nix
-      ./nvidia.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix  # Include the results of the hardware scan.
+    ./nvidia.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -67,7 +65,7 @@
   services.xserver.xkb.extraLayouts.custom = {
     description = "English (Engram)";
     languages = [ "eng" ];
-    symbolsFile = ./CustomKeyboard;
+    symbolsFile = ./engram;
   };
 
   # Enable CUPS to print documents.

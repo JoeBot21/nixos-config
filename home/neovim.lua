@@ -1,5 +1,3 @@
-vim.cmd("colorscheme murphy")
-
 -- Keymaps
 -- Leaders
 vim.g.mapleader = " "
@@ -19,14 +17,13 @@ vim.keymap.set("n", "<C-s>", "<C-w>l")      -- Move to split right
 
 -- Options
 -- Indentation
+-- vim.cmd("filetype indent on")       -- Use filetype detection and cindent
 vim.opt.autoindent = true           -- Newlines match current line indent
-vim.opt.breakindent = true          -- Indent wrapped lines
-vim.opt.briopt = "min:20,shift:2"   -- Additional breakindent options
 vim.opt.expandtab = true            -- Tabs are spaces
-vim.opt.shiftwidth = 2              -- Number of spaces to insert on a tab
+vim.opt.shiftwidth = 4              -- Number of spaces to insert on a tab
 vim.opt.smartindent = true          -- Automatically indent after open braces and keywords
-vim.opt.softtabstop = 2             -- Number of spaces in tab whe editing
-vim.opt.tabstop = 2                 -- Number of visual spaces per TAB
+vim.opt.softtabstop = 4             -- Number of spaces in tab whe editing
+vim.opt.tabstop = 4                 -- Number of visual spaces per TAB
 
 -- Searching
 vim.opt.hlsearch = true             -- Highlight search matches
@@ -35,6 +32,8 @@ vim.opt.incsearch = true            -- Search as characters are entered
 vim.opt.smartcase = true            -- Make searches case sensitive if an uppercase is entered
 
 -- UI config
+vim.cmd("colorscheme murphy")       -- Set the colorscheme
+vim.opt.colorcolumn = {81, 101}     -- Add vertical lines for linebreak warnings
 vim.opt.cursorline = false          -- Underline the current line
 vim.opt.mouse = "a"                 -- Enable the mouse
 vim.opt.number = true               -- Show absolute line number
@@ -44,3 +43,8 @@ vim.opt.showmode = true             -- Show current mode (insert, visual, etc.)
 vim.opt.splitbelow = true           -- Open new vertical splits on the bottom
 vim.opt.splitright = true           -- Open new horizontal splits on the right
 vim.opt.termguicolors = true        -- Enable 24-bit RGB color in the TUI
+
+-- Wraping
+vim.opt.breakindent = true          -- Indent wrapped lines
+vim.opt.briopt = "min:20,shift:2"   -- Additional breakindent options
+vim.opt.linebreak = true            -- Wrap lines at `breakat` characters

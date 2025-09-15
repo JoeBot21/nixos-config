@@ -1,9 +1,12 @@
-
-{ config, pkgs, lib, ... }: {
-
-  imports = [ <home-manager/nixos> ];
+{ config, pkgs, lib, ... }:
+{
+  imports = [
+    <home-manager/nixos>
+    ./email.nix
+  ];
 
   home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 
   # Nixos definition of the user account
   users.users.joebot = {
@@ -26,7 +29,7 @@
   };
 
   # Home Manager configuration
-  home-manager.users.joebot = { config, pkgs, lib, ... }: {
+  home-manager.users.joebot = {
     home.file = {
       neovim = {
         enable = true;
@@ -61,11 +64,10 @@
 
       ledger = {
         enable = true;
-        extraConfig = "--file ~/Documents/ledger.dat";
+        extraConfig = "--file ~/Documents/Financial/ledger.dat";
       };
 
       ncmpcpp.enable = true;
-      neomutt.enable = true;
 
       ssh = {
         enable = true;
@@ -94,6 +96,4 @@
     # release notes.
     home.stateVersion = "25.05";  # Please read the comment before changing.
   };
-
-  # nixvim configuration
 }
